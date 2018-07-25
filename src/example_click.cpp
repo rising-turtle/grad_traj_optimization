@@ -13,6 +13,44 @@ void waypointCallback(const geometry_msgs::PoseStamped::ConstPtr &msg);
 bool waypoint_enough = false;
 vector<Eigen::Vector3d> way_points;
 
+void usingGivenWaypoints()
+{
+    Eigen::Vector3d pt; 
+    pt(2) = 4; // 2
+
+    pt(0) = 0.880678; 
+    pt(1) = 1.03086; 
+    way_points.push_back(pt); 
+
+    pt(0) = 0.498248;      
+    pt(1) = 0.326108;
+    way_points.push_back(pt); 
+
+    pt(0) = -0.520836; 
+    pt(1) = 0.301035;
+    way_points.push_back(pt); 
+
+    pt(0) = -0.987531;  
+    pt(1) = 1.12145; 
+    way_points.push_back(pt); 
+
+    pt(0) = -1.58797;  
+    pt(1) = 1.76864; 
+    way_points.push_back(pt); 
+
+    pt(0) = -1.66106;  
+    pt(1) = 2.63501; 
+    way_points.push_back(pt); 
+
+    pt(0) = -1.02855;
+    pt(1) = 3.5216; 
+    way_points.push_back(pt);   
+    waypoint_enough = true; 
+
+}
+
+
+
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "random");
@@ -144,6 +182,10 @@ int main(int argc, char **argv)
 
   //-----------------------------Wait for user to click waypoint--------------------
   cout << "----------------------Please click some way_points----------------------- " << endl;
+
+  usingGivenWaypoints(); 
+  ros::spinOnce(); 
+
   while(ros::ok() && !waypoint_enough)
   {
     ros::spinOnce();
