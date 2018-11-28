@@ -121,8 +121,8 @@ void pcd_click(string pcd_file)
     cout << "----------------------Please click some way_points----------------------- " << endl;
 
     // test with given points
-    // usingGivenWaypoints(); 
-    // ros::spinOnce(); 
+    usingGivenWaypoints(); 
+    ros::spinOnce(); 
 
     while(ros::ok() && !waypoint_enough)
     {
